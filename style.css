@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #92e07e; /* Verde claro do fundo da imagem */
+    background-color: #92e07e; /* Verde claro do fundo */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -15,11 +15,10 @@ body {
 
 /* CABEÇALHO */
 .header {
-    background-color: #1c9214; /* Verde escuro do topo */
+    background-color: #1c9214; /* Verde escuro */
     color: #ffffff;
     text-align: center;
     padding: 20px 15px;
-    font-size: 14px;
 }
 
 .header h1 {
@@ -69,12 +68,12 @@ body {
 
 .btn-verde-escuro {
     background-color: #1c9214;
-    color: #5c3d11; /* Letras em marrom conforme imagem */
+    color: #5c3d11; 
 }
 
 .btn-marrom {
     background-color: #5c3d11;
-    color: #92e07e; /* Letras em verde claro conforme imagem */
+    color: #92e07e; 
 }
 
 /* ÁREA DE EXIBIÇÃO (DIREITA) */
@@ -102,47 +101,86 @@ body {
     height: 100%;
 }
 
-/* ABAS DE CONTEÚDO DINÂMICO (Lógica Funcional via CSS) */
+/* ABAS DE CONTEÚDO DINÂMICO */
 .aba-conteudo {
-    display: none; /* Fica escondido por padrão */
+    display: none; 
     background-color: #5c3d11;
     color: #ffffff;
-    padding: 30px;
+    padding: 25px;
     border-radius: 4px;
     width: 100%;
     max-width: 400px;
     aspect-ratio: 1 / 1;
     animation: fadeIn 0.4s ease-in-out forwards;
+    flex-direction: column;
+}
+
+/* Suporte a rolagem interna para textos compridos */
+.rolagem {
+    overflow-y: auto;
+    justify-content: flex-start !important;
 }
 
 .aba-conteudo h2 {
     color: #92e07e;
     margin-bottom: 15px;
     font-size: 1.4rem;
+    position: sticky;
+    top: 0;
+    background-color: #5c3d11;
+    padding-bottom: 5px;
 }
 
 .aba-conteudo p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* Itens internos de receitas e quizzes */
+.receita-item, .quiz-item {
+    margin-bottom: 15px;
+}
+
+.receita-item h3 {
+    color: #92e07e;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+.resposta-quiz {
+    color: #92e07e;
+    font-style: italic;
+    padding-left: 10px;
+    border-left: 2px stroke #92e07e;
+}
+
+.divisor {
+    border: 0;
+    border-top: 1px dashed #92e07e;
+    margin: 15px 0;
+    opacity: 0.5;
 }
 
 .btn-fechar {
-    display: inline-block;
+    display: block;
     color: #92e07e;
     text-decoration: underline;
     font-size: 0.9rem;
+    margin-top: 15px;
+    position: sticky;
+    bottom: 0;
+    background-color: #5c3d11;
+    padding-top: 5px;
 }
 
-/* Lógica do Target: Mostra o texto e esconde a imagem original ao clicar */
+/* Lógica do Target */
 .content-area:has(:target) #imagem-principal {
     display: none;
 }
 
 .aba-conteudo:target {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 /* RODAPÉ */
@@ -152,15 +190,16 @@ body {
     text-align: center;
     padding: 15px;
     font-size: 1rem;
+    margin-top: auto;
 }
 
-/* Animação suave de transição */
+/* Animação suave */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVIDADE (Para celulares) */
+/* RESPONSIVIDADE */
 @media (max-width: 680px) {
     .container {
         flex-direction: column;
