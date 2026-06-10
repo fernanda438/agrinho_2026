@@ -1,0 +1,173 @@
+/* CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #92e07e; /* Verde claro do fundo da imagem */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* CABEÇALHO */
+.header {
+    background-color: #1c9214; /* Verde escuro do topo */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 15px;
+    font-size: 14px;
+}
+
+.header h1 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+/* CORPO DO SITE */
+.container {
+    display: flex;
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* MENU LATERAL (BOTÕES) */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 250px;
+}
+
+/* ESTILIZAÇÃO DOS BOTÕES */
+.btn {
+    display: block;
+    text-align: center;
+    padding: 20px 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.btn-verde-escuro {
+    background-color: #1c9214;
+    color: #5c3d11; /* Letras em marrom conforme imagem */
+}
+
+.btn-marrom {
+    background-color: #5c3d11;
+    color: #92e07e; /* Letras em verde claro conforme imagem */
+}
+
+/* ÁREA DE EXIBIÇÃO (DIREITA) */
+.content-area {
+    flex: 1;
+    position: relative;
+    min-height: 350px;
+}
+
+/* CONTAINER DA IMAGEM */
+.box-imagem {
+    width: 100%;
+    max-width: 400px;
+    background-color: #5c3d11;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.svg-agro {
+    width: 100%;
+    height: 100%;
+}
+
+/* ABAS DE CONTEÚDO DINÂMICO (Lógica Funcional via CSS) */
+.aba-conteudo {
+    display: none; /* Fica escondido por padrão */
+    background-color: #5c3d11;
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.aba-conteudo h2 {
+    color: #92e07e;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.aba-conteudo p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn-fechar {
+    display: inline-block;
+    color: #92e07e;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+/* Lógica do Target: Mostra o texto e esconde a imagem original ao clicar */
+.content-area:has(:target) #imagem-principal {
+    display: none;
+}
+
+.aba-conteudo:target {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* RODAPÉ */
+.footer {
+    background-color: #5c3d11;
+    color: #92e07e;
+    text-align: center;
+    padding: 15px;
+    font-size: 1rem;
+}
+
+/* Animação suave de transição */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVIDADE (Para celulares) */
+@media (max-width: 680px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar, .box-imagem, .aba-conteudo {
+        width: 100%;
+        max-width: 100%;
+    }
+}
